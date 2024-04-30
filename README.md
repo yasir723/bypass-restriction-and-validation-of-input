@@ -33,4 +33,7 @@ Kısıtlamaları yaptıklarını göreceğiz. Peki bu kısıtlamaları aşmak is
 
 Yukarıdaki kısıtlamaları aşabildik ancka eğer boş bir veri göndermeye çalışırsak input element içinde `required` özelliği dolayından boş geçilmemeli. Fakat onu da incele kısmından silerse hem Kullanıcı Adı hem Şifre inputlarından `required` özelliğini silersek sisteme boş bir veri göndermeye başaracağız.
 
-Bir diğer yöntem daha performanslı ve genellikle kullanılan yöntem `ağ` kısmından get veya post olarak gönderilen parametreleri görebildiğmizi anladık temel kavramlarında anlatıldığı gibi. Bu yüzden gönderilen parametrelerin değerini oradan ayarlayabilirim ve oradan direkt gönderebilirim. Yani sitedeki formu kullanmadan ve inputları kullanmadan direkt  `ağ` kısmından verileri gönderebiliriz
+Bir diğer yöntem daha performanslı ve genellikle kullanılan yöntem `ağ` kısmından get veya post olarak gönderilen parametreleri görebildiğmizi anladık temel kavramlarında anlatıldığı gibi. Bu yüzden gönderilen parametrelerin değerini oradan ayarlayabilirim ve oradan direkt gönderebilirim. Yani sitedeki formu kullanmadan ve inputları kullanmadan direkt  `ağ` kısmından verileri gönderebiliriz.
+
+Önce gönderme işlemi yapan POST talebini tespit etmemiz gerek bu da doğru bir veri göndererek yapabiliriz, ardından incele -> ağ -> post -> Resent bölümünden gönderilen paramsları düzeltebiliriz ve yeniden gönderebiliriz.
+
