@@ -1,1 +1,1 @@
-# giri-kontrol-ve-do-rulaman-n-atlat-lmas-
+# Giriş Kontrolü ve Doğrulamanın Atlatılması
