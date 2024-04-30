@@ -1,0 +1,1 @@
+# giri-kontrol-ve-do-rulaman-n-atlat-lmas-
