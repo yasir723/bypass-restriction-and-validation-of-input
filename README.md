@@ -35,5 +35,12 @@ Yukarıdaki kısıtlamaları aşabildik ancka eğer boş bir veri göndermeye ç
 
 Bir diğer yöntem daha performanslı ve genellikle kullanılan yöntem `ağ` kısmından get veya post olarak gönderilen parametreleri görebildiğmizi anladık temel kavramlarında anlatıldığı gibi. Bu yüzden gönderilen parametrelerin değerini oradan ayarlayabilirim ve oradan direkt gönderebilirim. Yani sitedeki formu kullanmadan ve inputları kullanmadan direkt  `ağ` kısmından verileri gönderebiliriz.
 
-Önce gönderme işlemi yapan POST talebini tespit etmemiz gerek bu da doğru bir veri göndererek yapabiliriz, ardından incele -> ağ -> post -> Resent bölümünden gönderilen paramsları düzeltebiliriz ve yeniden gönderebiliriz.
+Önce gönderme işlemi yapan POST talebini tespit etmemiz gerek bu da doğru bir veri göndererek yapabiliriz, ardından incele -> ağ -> post -> Resent bölümünden gönderilen paramsları düzeltebiliriz ve yeniden gönderebiliriz. POST talebini tespit etmek için doğru bir veri göndereek POST talebini tıklarız orada gönderdiğimiz parametreleri değiştirerek istemcideki herhangi bir kısıtlamaya bağlı kalmadan sunuca istediğimiz veri gönderebiliriz:
+
+
+
+[![Kısıtlama Olmadan Gönderme Yöntemi](https://github.com/yasir723/giris-dogrulamanin-atlatilmasi-ve-kisitlamalarin-asilmasi/assets/111686779/13a25c06-e03f-4836-8e5a-30352d8bb21f)](https://github.com/yasir723/giris-dogrulamanin-atlatilmasi-ve-kisitlamalarin-asilmasi/assets/111686779/13a25c06-e03f-4836-8e5a-30352d8bb21f)
+
+
+
 
