@@ -1,14 +1,14 @@
 # Giriş Doğrulamanın Atlatılması ve Kısıtlamaların Aşılması ( Bypass Restriction and validation of input )
-Hacker olarak bir sisteme sızarken bu sistemi geliştirenler tarafından kısıtlamaları atlatmamız gerek çünkü onlar sistemi güvenliğini sağlamak için bu kısıtlamaları koymuşlar ancak bu kısıtlamalrı aşarsak bizim ulaşmamızı istemedikleri bilgiye ulaşmış oluruz. Genellikle ulaşmamız gerekn yerleri tespit etmek için onların koyduğu kısıtlamalardan tespit ederiz çünkü ulaşmamız sisteme tehlikeli olduğunu düşündükleri için bu kısıtlamaları koyarlar. 
+Hackerlar olarak, bir sisteme yetkisiz erişim sağlarken, sistemi geliştirenler tarafından belirlenen kısıtlamaları aşmamız gerekir. Bu kısıtlamalar, geliştiricilerin sistem güvenliğini sağlamak amacıyla yerleştirdiği önlemlerdir. Ancak, bu kısıtlamaları geçerek, genellikle erişmemiz gereken bilgilere ulaşabiliriz. Sıkça, hedeflenen bilgilere erişmek için, geliştiricilerin bu kısıtlamaları neden koyduğunu anlamaya çalışırız. Çünkü bu kısıtlamalar, genellikle geliştiricilerin hassas bilgilerin ele geçirilmesini önlemek için koyduğu güvenlik önlemleridir.
 
-Örneğin sisteme giriş yapmak için hem Kullanıcı Adı hem Şifre girmemiz gerek ki sisteme başarılı bir giriş yapabilmesi için ancak biz ikisini girme kısıtlamasını aşmaya çalışıp sadece birini yazarak sisteme sızmaya çalışacağız. Başka bir saldırı ise kısıtlamaları aşaarak sunucuya boş veri göndermeye çalışacağız, Böylece veritabanı doldurulmuş olup sunucu meşgül etmiş oluruz. böylece diğer kullanıcı veri tarfiği kalabalığından çok yavaş bir şekilde erişmeye başlıyor ve sistemi çökmeye iteriz 
+Örneğin, bir sisteme giriş yapmak için hem Kullanıcı Adı hem de Şifre girmemiz gerekebilir. Ancak, bu kısıtlamayı aşmaya çalışarak sadece birini girebilir ve sistemde yetkisiz bir erişim sağlamaya çalışabiliriz. Başka bir saldırı türü ise, kısıtlamaları aşarak sunucuya boş veri göndermeye çalışmaktır. Böylece, veritabanı gereksiz verilerle doldurulur ve sunucu meşgul hale gelir. Sonuç olarak, diğer kullanıcıların veri trafiği yoğunluğu nedeniyle sistem erişimi yavaşlar ve hatta sistem çökebilir.
 
 <div align='center' >
     <img src='https://github.com/yasir723/giris-dogrulamanin-atlatilmasi-ve-kisitlamalarin-asilmasi/assets/111686779/cb13a77e-97f1-46ed-a916-cc7963b4e05f'>
 </div>
 
 kullandığımız sisteme kullanıcı eklemeye çalışırsak şifre kısıtlamaları dolayından bazı durumlar `Kullanıcı Ekle` buttonu aktif olmuyor. Bu yüzden `view page soruce` kısmına bakarsak JavaScript kodlarında bulunan şifre kısıtlamaları için bu kodu yazmışlar.
-
+Sisteme kullanıcı eklemeye çalıştığımızda, bazı durumlarda `Kullanıcı Ekle` düğmesi etkinleştirilmiyor. Bunun nedeni `view page soruce` kısmında aradığımızda JavaScript kodlarında bulunan şifre kısıtlamaları için bu kod yazılmıştır.
 
 ```js
 var lowerCaseLetters = /[a-z]/g;
@@ -19,24 +19,27 @@ if (myInput.value.length > 5) {
     submitBtn.disabled = false;
 }
 ```
-Bu kodu incelediğimizde 
-- En az küçük bir harfin bulunması
-- şifrenin uzunluğu 5ten büyük olması.
+Bu kodu incelediğimizde, şifre kısıtlamalarının:
 
-Kısıtlamaları yaptıklarını göreceğiz. Peki bu kısıtlamaları aşmak istiyoruz yani uzunluğu 3 olsa bile gönderilsin hatta hiç bir şey yazmasam da boş olarak veritabanına gönderilsin istiyorum.
+- En az bir küçük harfin bulunması.
+- Şifrenin 5 karakterden uzun olması.
 
-`Kullanıcı Ekle` buttonunu disenable özelliğini direkt incele kısmından kaldırabiliriz:
+şeklinde olduğunu görüyoruz. Ancak, bu kısıtlamaları aşmak ve şifrenin 3 karakterden az olmasına rağmen veya boş olarak bırakmamıza rağmen gönderilmesini sağlamak istiyoruz. Başarabilirsek çok fazla sayıda boş ve gereksiz veri göndererek veritabanı doldurabiliriz
 
+Kısıtlamaları atlatmak için birkaç farklı yöntem deneyebiliriz:
+
+
+Örneğin, `Kullanıcı Ekle` butonunun etkin olmamasını sağlayan `disabled` özelliğini doğrudan inceleme aracı ile kaldırabiliriz.
 <div align='center' >
     <img src='https://github.com/yasir723/giris-dogrulamanin-atlatilmasi-ve-kisitlamalarin-asilmasi/assets/111686779/409a0a37-8b52-4643-9383-3d42fb020ee8'>
 </div>
 
-Yukarıdaki kısıtlamaları aşabildik ancka eğer boş bir veri göndermeye çalışırsak input element içinde `required` özelliği dolayından boş geçilmemeli. Fakat onu da incele kısmından silerse hem Kullanıcı Adı hem Şifre inputlarından `required` özelliğini silersek sisteme boş bir veri göndermeye başaracağız.
+Yukarıdaki JavaScript kısıtlamalarını aşabildik; şimdi, uzunluğu veya içeriği ne olursa olsun sisteme gönderebiliriz. Ancak, eğer boş bir veri göndermeye çalışırsak, input alanlarının içindeki `required` özelliği nedeniyle boş geçemeyiz. Fakat, inceleme aracıyla hem Kullanıcı Adı hem de Şifre alanlarından `required` özelliğini kaldırırsak, sisteme boş bir veri göndermeyi başarabiliriz.
 
-Bir diğer yöntem daha performanslı ve genellikle kullanılan yöntem `ağ` kısmından get veya post olarak gönderilen parametreleri görebildiğmizi anladık temel kavramlarında anlatıldığı gibi. Bu yüzden gönderilen parametrelerin değerini oradan ayarlayabilirim ve oradan direkt gönderebilirim. Yani sitedeki formu kullanmadan ve inputları kullanmadan direkt  `ağ` kısmından verileri gönderebiliriz.
 
-Önce gönderme işlemi yapan POST talebini tespit etmemiz gerek bu da doğru bir veri göndererek yapabiliriz, ardından incele -> ağ -> post -> Resent bölümünden gönderilen paramsları düzeltebiliriz ve yeniden gönderebiliriz. POST talebini tespit etmek için doğru bir veri göndereek POST talebini tıklarız orada gönderdiğimiz parametreleri değiştirerek istemcideki herhangi bir kısıtlamaya bağlı kalmadan sunuca istediğimiz veri gönderebiliriz:
+Bir diğer daha performanslı ve sıkça kullanılan yöntem, `Temel Kavramlar` bölümünde açıklandığı gibi, ağ kısmından GET veya POST olarak gönderilen parametreleri görebilmemizdir. Bu nedenle, gönderilen parametrelerin değerini buradan ayarlayabilir ve doğrudan gönderebiliriz. Yani, `site içindeki formu veya inputları kullanmadan, doğrudan ağ kısmından verileri gönderebiliriz`. Bu özellik, her tarayıcıda bulunmayabilir, ancak Firefox'ta bulunmaktadır.
 
+POST talebini tespit etmek için ilk adım olarak doğru bir veri göndermek gereklidir. Bu adımı takiben, "İncele -> Ağ -> POST -> Yeniden Gönder (Resent)" adımlarını izleyerek gönderilen parametreleri düzeltebilir ve istediğimiz veriyi sunucuya gönderebiliriz. Bu şekilde, istemcideki herhangi bir kısıtlamaya takılmadan istediğimiz veriyi sunucuya iletebiliriz.
 
 
 [![Kısıtlama Olmadan Gönderme Yöntemi](https://github.com/yasir723/giris-dogrulamanin-atlatilmasi-ve-kisitlamalarin-asilmasi/assets/111686779/13a25c06-e03f-4836-8e5a-30352d8bb21f)](https://github.com/yasir723/giris-dogrulamanin-atlatilmasi-ve-kisitlamalarin-asilmasi/assets/111686779/13a25c06-e03f-4836-8e5a-30352d8bb21f)
