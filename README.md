@@ -27,9 +27,9 @@ Bu kodu incelediğimizde, şifre kısıtlamalarının:
 
 şeklinde olduğunu görüyoruz. Ancak, bu kısıtlamaları aşmak ve şifrenin 3 karakterden az olmasına rağmen veya boş olarak bırakmamıza rağmen gönderilmesini sağlamak istiyoruz. Başarabilirsek çok fazla sayıda boş ve gereksiz veri göndererek veritabanı doldurabiliriz
 
-Kısıtlamaları atlatmak için birkaç farklı yöntem deneyebiliriz:
+Kısıtlamaları atlatmak için birkaç farklı yöntem deneyebiliriz.
 
-
+## HTML Elementleri Kısıtlamaları
 Örneğin, `Kullanıcı Ekle` butonunun etkin olmamasını sağlayan `disabled` özelliğini doğrudan inceleme aracı ile kaldırabiliriz.
 <div align='center' >
     <img src='https://github.com/yasir723/giris-dogrulamanin-atlatilmasi-ve-kisitlamalarin-asilmasi/assets/111686779/409a0a37-8b52-4643-9383-3d42fb020ee8'>
