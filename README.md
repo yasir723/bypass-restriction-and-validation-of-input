@@ -3,6 +3,7 @@ Hackerlar olarak, bir sisteme yetkisiz erişim sağlarken, sistemi geliştirenle
 
 Örneğin, bir sisteme giriş yapmak için hem Kullanıcı Adı hem de Şifre girmemiz gerekebilir. Ancak, bu kısıtlamayı aşmaya çalışarak sadece birini girebilir ve sistemde yetkisiz bir erişim sağlamaya çalışabiliriz. Başka bir saldırı türü ise, kısıtlamaları aşarak sunucuya boş veri göndermeye çalışmaktır. Böylece, veritabanı gereksiz verilerle doldurulur ve sunucu meşgul hale gelir. Sonuç olarak, diğer kullanıcıların veri trafiği yoğunluğu nedeniyle sistem erişimi yavaşlar ve hatta sistem çökebilir.
 
+## JavaScript kısıtlamaları
 <div align='center' >
     <img src='https://github.com/yasir723/giris-dogrulamanin-atlatilmasi-ve-kisitlamalarin-asilmasi/assets/111686779/cb13a77e-97f1-46ed-a916-cc7963b4e05f'>
 </div>
